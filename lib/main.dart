@@ -31,10 +31,23 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = [];
 
-  void checkAnswer(bool userAnswerPicked) {
+  void checkAnswer(bool userPickedAnswer) {
     bool correctAnswer = quizBrain.getQuestionAnswer();
-    if (correctAnswer == true) {
-    } else {}
+    if (userPickedAnswer == correctAnswer) {
+      scoreKeeper.add(
+        Icon(
+          Icons.check,
+          color: Colors.green,
+        ),
+      );
+    } else {
+      scoreKeeper.add(
+        Icon(
+          Icons.close,
+          color: Colors.red,
+        ),
+      );
+    }
     setState(() {
       quizBrain.nextQuestion();
     });
